@@ -1,4 +1,3 @@
-
 case Code.ensure_loaded(:persistent_term) do
   {:module, _mod} ->
     defmodule Absinthe.Schema.PersistentTerm do
@@ -95,7 +94,6 @@ case Code.ensure_loaded(:persistent_term) do
 
       @dialyzer {:nowarn_function, [get: 1]}
       defp get(schema) do
-        IO.inspect :persistent_term.get()
         :persistent_term.get({__MODULE__, schema})
       end
     end
