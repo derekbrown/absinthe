@@ -95,7 +95,11 @@ case Code.ensure_loaded(:persistent_term) do
 
       @dialyzer {:nowarn_function, [get: 1]}
       defp get(schema) do
-        :persistent_term.get({Absinthe.Schema, schema})
+        IO.inspect Code.ensure_loaded(:persistent_term)
+        IO.inspect __MODULE__.__info__(:module)
+        IO.inspect schema.__info__(:module)
+        IO.inspect Code.ensure_loaded(schema)
+        :persistent_term.get({__MODULE__, schema})
       end
     end
 {:error, _err} ->
